@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dashboard | StoryForge AI</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/dashboard.css">
+
+</head>
+
+
+<body>
+
+
+<div class="dashboard">
+
+
+<aside class="sidebar">
+
+
+<h2 class="logo">StoryForge</h2>
+
+
+<ul>
+
+
+<li onclick="location.href='dashboard.html'">
+
+<i class="fa-solid fa-house"></i>
+
+Dashboard
+
+</li>
+
+
+<li onclick="location.href='story.html'">
+
+<i class="fa-solid fa-pen"></i>
+
+New Story
+
+</li>
+
+
+<li onclick="location.href='mystories.html'">
+
+<i class="fa-solid fa-book"></i>
+
+My Stories
+
+</li>
+
+
+<li onclick="location.href='profile.html'">
+
+<i class="fa-solid fa-user"></i>
+
+Profile
+
+</li>
+
+
+<li id="logoutBtn">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+Logout
+
+</li>
+
+
+</ul>
+
+
+</aside>
+
+
+
+<main class="main">
+
+
+<div class="topbar">
+
+
+<input
+type="text"
+placeholder="Search your stories...">
+
+
+<div class="top-icons">
+
+
+<i class="fa-solid fa-bell"></i>
+
+
+<img src="images/avatar.png" alt="Profile">
+
+
+</div>
+
+
+</div>
+
+
+
+<section class="welcome">
+
+
+<div>
+
+
+<h1 id="welcomeUser">Welcome Back 👋</h1>
+
+
+<p>
+
+Continue your adventure or create a brand new story.
+
+</p>
+
+
+</div>
+
+
+
+<button
+onclick="location.href='story.html'"
+class="btn-primary">
+
+
++ New Story
+
+
+</button>
+
+
+</section>
+
+
+
+<section class="recent">
+
+
+<h2>Your Stories</h2>
+
+
+<div id="storyList" class="story-list">
+
+
+<div class="story-card">
+
+
+<h3>No stories yet</h3>
+
+
+<p>Click "New Story" to begin.</p>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+</main>
+
+
+</div>
+
+
+
+<script type="module" src="js/dashboard.js"></script>
+
+<script type="module" src="js/commonAuth.js"></script>
+
+
+</body>
+
+</html>

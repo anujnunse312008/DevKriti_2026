@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>New Story | StoryForge AI</title>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="stylesheet" href="css/story.css">
+
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+
+</head>
+
+
+<body>
+
+
+<div class="story-layout">
+
+
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+
+<h2 class="logo">
+
+StoryForge
+
+</h2>
+
+
+
+<ul>
+
+
+<li onclick="location.href='dashboard.html'">
+
+<i class="fa-solid fa-house"></i>
+
+Dashboard
+
+</li>
+
+
+
+<li class="active">
+
+<i class="fa-solid fa-pen"></i>
+
+New Story
+
+</li>
+
+
+
+<li onclick="location.href='mystories.html'">
+
+<i class="fa-solid fa-book"></i>
+
+My Stories
+
+</li>
+
+
+
+<li onclick="location.href='profile.html'">
+
+<i class="fa-solid fa-user"></i>
+
+Profile
+
+</li>
+
+
+
+<li id="logoutBtn">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+Logout
+
+</li>
+
+
+</ul>
+
+
+</aside>
+
+
+
+
+
+<!-- STORY AREA -->
+
+<main class="story-main">
+
+
+
+<div class="story-header">
+
+
+<h1>
+
+Create Your Story
+
+</h1>
+
+
+<button id="dashboardBtn">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+Dashboard
+
+</button>
+
+
+</div>
+
+
+
+
+
+<div class="card setup-card">
+
+
+
+<h2>
+
+Story Setup
+
+</h2>
+
+
+
+<input
+type="text"
+id="title"
+placeholder="Story Title">
+
+
+
+
+
+<textarea
+id="prompt"
+placeholder="Describe your story idea..."></textarea>
+
+
+
+
+
+<div class="row">
+
+
+<select id="genre">
+
+
+<option>Fantasy</option>
+
+<option>Adventure</option>
+
+<option>Romance</option>
+
+<option>Horror</option>
+
+<option>Sci-Fi</option>
+
+<option>Mystery</option>
+
+
+</select>
+
+
+
+<select id="tone">
+
+
+<option>Serious</option>
+
+<option>Dark</option>
+
+<option>Funny</option>
+
+<option>Emotional</option>
+
+
+</select>
+
+
+</div>
+
+
+
+
+<button
+id="startStoryBtn"
+class="primary-btn">
+
+
+<i class="fa-solid fa-wand-magic-sparkles"></i>
+
+Start Story
+
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="card story-card">
+
+
+
+<h2>
+
+Your Story
+
+</h2>
+
+
+
+
+<textarea
+id="storyArea"
+placeholder="Your generated story will appear here...
+You can edit anything before continuing."></textarea>
+
+
+
+
+
+<textarea
+id="lastScene"
+hidden></textarea>
+
+
+
+
+
+<div class="buttons">
+
+
+<button id="continueBtn">
+
+Continue Story
+
+</button>
+
+
+
+<button id="regenerateBtn">
+
+Regenerate Scene
+
+</button>
+
+
+
+<button id="endStoryBtn">
+
+Finish Story
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+<div id="loading"></div>
+
+
+
+</div>
+
+
+
+</main>
+
+
+
+</div>
+
+
+
+
+
+<script type="module" src="js/story.js"></script>
+
+<script type="module" src="js/commonAuth.js"></script>
+
+
+
+</body>
+
+</html>

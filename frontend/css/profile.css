@@ -1,0 +1,180 @@
+.profile-layout{
+
+    display:flex;
+
+    min-height:100vh;
+
+    background:#F6F8FC;
+
+}
+
+/* Sidebar */
+
+.sidebar{
+
+    width:260px;
+
+    background:white;
+
+    padding:30px 20px;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+}
+
+.sidebar .logo{
+
+    color:#6C4DF6;
+
+    margin-bottom:40px;
+
+}
+
+.sidebar ul{
+
+    list-style:none;
+
+}
+
+.sidebar li{
+
+    padding:16px;
+
+    margin-bottom:12px;
+
+    border-radius:12px;
+
+    display:flex;
+
+    gap:12px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.sidebar li:hover,
+.sidebar .active{
+
+    background:#6C4DF6;
+
+    color:white;
+
+}
+
+/* Main */
+
+.profile-main{
+
+    flex:1;
+
+    padding:40px;
+
+}
+
+.profile-card{
+
+    margin-top:30px;
+
+    background:white;
+
+    padding:40px;
+
+    border-radius:20px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+}
+
+/* Avatar */
+
+.profile-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:30px;
+
+    margin-bottom:40px;
+
+}
+
+.profile-header img{
+
+    width:120px;
+
+    height:120px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+}
+
+/* Inputs */
+
+.row{
+
+    display:flex;
+
+    gap:20px;
+
+}
+
+.input-group{
+
+    flex:1;
+
+    margin-bottom:25px;
+
+}
+
+.input-group label{
+
+    display:block;
+
+    margin-bottom:10px;
+
+    font-weight:500;
+
+}
+
+.input-group input,
+.input-group textarea{
+
+    width:100%;
+
+    padding:15px;
+
+    border:1px solid #ddd;
+
+    border-radius:10px;
+
+    outline:none;
+
+    font-family:'Poppins',sans-serif;
+
+}
+
+.input-group textarea{
+
+    height:150px;
+
+    resize:none;
+
+}
+
+.input-group input:focus,
+.input-group textarea:focus{
+
+    border-color:#6C4DF6;
+
+}
+
+.save-btn{
+
+    margin-top:20px;
+
+}
