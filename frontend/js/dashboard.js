@@ -153,3 +153,47 @@ if (newStoryBtn) {
     });
 
 }
+// ==========================
+// Mobile Sidebar
+// ==========================
+
+const menuBtn = document.getElementById("menuBtn");
+
+const sidebar = document.querySelector(".sidebar");
+
+const overlay = document.getElementById("sidebarOverlay");
+
+if(menuBtn){
+
+    menuBtn.addEventListener("click", ()=>{
+
+        sidebar.classList.toggle("show-sidebar");
+
+        overlay.classList.toggle("show");
+
+    });
+
+}
+
+overlay.addEventListener("click", ()=>{
+
+    sidebar.classList.remove("show-sidebar");
+
+    overlay.classList.remove("show");
+
+});
+// Close sidebar when a menu item is clicked
+
+const menuItems = document.querySelectorAll(".sidebar li");
+
+menuItems.forEach(item => {
+
+    item.addEventListener("click", () => {
+
+        sidebar.classList.remove("show-sidebar");
+
+        overlay.classList.remove("show");
+
+    });
+
+});

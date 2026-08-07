@@ -366,3 +366,50 @@ endStoryBtn.addEventListener("click", () => {
     sendRequest("finish");
 
 });
+// ==========================
+// Mobile Sidebar
+// ==========================
+
+const menuBtn = document.getElementById("menuBtn");
+
+const sidebar = document.querySelector(".sidebar");
+
+const overlay = document.getElementById("sidebarOverlay");
+
+if (menuBtn) {
+
+    menuBtn.addEventListener("click", () => {
+
+        sidebar.classList.toggle("show-sidebar");
+
+        overlay.classList.toggle("show");
+
+    });
+
+}
+
+if (overlay) {
+
+    overlay.addEventListener("click", () => {
+
+        sidebar.classList.remove("show-sidebar");
+
+        overlay.classList.remove("show");
+
+    });
+
+}
+
+const menuItems = document.querySelectorAll(".sidebar li");
+
+menuItems.forEach(item => {
+
+    item.addEventListener("click", () => {
+
+        sidebar.classList.remove("show-sidebar");
+
+        overlay.classList.remove("show");
+
+    });
+
+});

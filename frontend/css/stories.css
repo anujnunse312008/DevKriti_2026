@@ -124,7 +124,8 @@
 }
 
 .story-card{
-
+    display: flex;
+flex-direction: column;
     background:white;
 
     border-radius:18px;
@@ -167,4 +168,265 @@
 
     font-size:14px;
 
+}
+.delete-btn{
+
+    margin-top:auto;
+
+    width:100%;
+
+    padding:10px 15px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#e53935;
+
+    color:white;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:8px;
+
+    cursor:pointer;
+
+    transition:all .3s ease;
+
+}
+
+.delete-btn:hover{
+
+    background:#c62828;
+
+    transform:translateY(-2px);
+
+    box-shadow:0 6px 15px rgba(229,57,53,.3);
+
+}
+
+.delete-btn:hover{
+
+    background:#c62828;
+
+    transform:translateY(-2px);
+
+}
+/*==========================
+        MOBILE MENU BUTTON
+==========================*/
+
+.menu-btn{
+
+    display:none;
+
+    position:fixed;
+
+    top:20px;
+
+    left:20px;
+
+    width:48px;
+
+    height:48px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#6C4DF6;
+
+    color:white;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+    z-index:1001;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+
+}
+
+/*==========================
+        SIDEBAR OVERLAY
+==========================*/
+
+.sidebar-overlay{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:rgba(0,0,0,.45);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.3s;
+
+    z-index:999;
+
+}
+
+.sidebar-overlay.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+/*==========================================================
+                    RESPONSIVE
+==========================================================*/
+
+@media (max-width:900px){
+
+.stories-layout{
+
+    display:block;
+
+}
+
+.menu-btn{
+
+    display:block;
+
+}
+
+.sidebar{
+
+    position:fixed;
+
+    left:-280px;
+
+    top:0;
+
+    width:260px;
+
+    height:100vh;
+
+    z-index:1000;
+
+    transition:.3s;
+
+}
+
+.show-sidebar{
+
+    left:0;
+
+}
+
+.stories-main{
+
+    padding:20px;
+
+    margin-top:70px;
+
+}
+
+.stories-header{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:20px;
+
+}
+
+.stories-header .btn-primary{
+
+    width:100%;
+
+}
+
+.search-box input{
+
+    width:100%;
+
+}
+
+.story-grid{
+
+    grid-template-columns:1fr;
+
+    gap:18px;
+
+}
+
+.story-card{
+
+    width:100%;
+
+}
+/*==========================
+        MOBILE HEADER
+==========================*/
+
+.stories-header h1{
+
+    font-size:30px;
+
+}
+
+.stories-header .btn-primary{
+
+    padding:16px;
+
+}
+
+/*==========================
+        MOBILE STORY CARDS
+==========================*/
+
+.story-card{
+
+    padding:20px;
+
+    border-radius:15px;
+
+}
+
+.story-card h3{
+
+    font-size:20px;
+
+}
+
+.story-card p{
+
+    font-size:15px;
+
+}
+
+.story-card span{
+
+    font-size:13px;
+
+}
+
+.delete-btn{
+
+    padding:14px;
+
+    font-size:15px;
+
+}
 }
