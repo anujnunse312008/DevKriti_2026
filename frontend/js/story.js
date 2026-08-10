@@ -13,6 +13,7 @@ import {
     serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
+
 const startStoryBtn = document.getElementById("startStoryBtn");
 const continueBtn = document.getElementById("continueBtn");
 const regenerateBtn = document.getElementById("regenerateBtn");
@@ -28,15 +29,19 @@ const storyArea = document.getElementById("storyArea");
 const lastScene = document.getElementById("lastScene");
 const loading = document.getElementById("loading");
 
+
 continueBtn.disabled = true;
 regenerateBtn.disabled = true;
 endStoryBtn.disabled = true;
 
+
 let currentUser = null;
 let storyId = null;
 
+
 const params = new URLSearchParams(window.location.search);
 const existingStoryId = params.get("id");
+
 
 onAuthStateChanged(auth, async (user) => {
 
@@ -57,11 +62,13 @@ onAuthStateChanged(auth, async (user) => {
 
 });
 
+
 dashboardBtn.addEventListener("click", () => {
 
     window.location.href = "dashboard.html";
 
 });
+
 
 async function loadStory(id) {
 
@@ -113,6 +120,7 @@ async function loadStory(id) {
 
 }
 
+
 function startLoading(message) {
 
     loading.innerHTML = "⏳ " + message;
@@ -128,6 +136,7 @@ function startLoading(message) {
     endStoryBtn.textContent = "Please Wait...";
 
 }
+
 
 function stopLoading() {
 
@@ -150,6 +159,8 @@ function stopLoading() {
     }, 1500);
 
 }
+
+
 async function saveStory() {
 
     if (!currentUser) return;
@@ -202,6 +213,7 @@ async function saveStory() {
 
 }
 
+
 async function sendRequest(action) {
 
     if (action === "start") {
@@ -236,37 +248,43 @@ async function sendRequest(action) {
 
     }
 
+
     try {
 
-        const response = await fetch("http://localhost:3000/generate", {
+        const response = await fetch(
+            "https://devkriti-2026.onrender.com/generate",
+            {
 
-            method: "POST",
+                method: "POST",
 
-            headers: {
+                headers: {
 
-                "Content-Type": "application/json"
+                    "Content-Type": "application/json"
 
-            },
+                },
 
-            body: JSON.stringify({
+                body: JSON.stringify({
 
-                action,
+                    action,
 
-                title: title.value,
+                    title: title.value,
 
-                prompt: prompt.value,
+                    prompt: prompt.value,
 
-                genre: genre.value,
+                    genre: genre.value,
 
-                tone: tone.value,
+                    tone: tone.value,
 
-                story: storyArea.value
+                    story: storyArea.value
 
-            })
+                })
 
-        });
+            }
+        );
+
 
         const data = await response.json();
+
 
         if (!data.story) {
 
@@ -277,6 +295,7 @@ async function sendRequest(action) {
             return;
 
         }
+
 
         if (action === "start") {
 
@@ -302,7 +321,10 @@ async function sendRequest(action) {
 
         else if (action === "regenerate") {
 
-            storyArea.value = storyArea.value.replace(lastScene.value, data.story);
+            storyArea.value = storyArea.value.replace(
+                lastScene.value,
+                data.story
+            );
 
             lastScene.value = data.story;
 
@@ -324,6 +346,7 @@ async function sendRequest(action) {
 
         }
 
+
         await saveStory();
 
     }
@@ -343,11 +366,14 @@ async function sendRequest(action) {
     }
 
 }
+
+
 startStoryBtn.addEventListener("click", () => {
 
     sendRequest("start");
 
 });
+
 
 continueBtn.addEventListener("click", () => {
 
@@ -355,17 +381,21 @@ continueBtn.addEventListener("click", () => {
 
 });
 
+
 regenerateBtn.addEventListener("click", () => {
 
     sendRequest("regenerate");
 
 });
 
+
 endStoryBtn.addEventListener("click", () => {
 
     sendRequest("finish");
 
 });
+
+
 // ==========================
 // Mobile Sidebar
 // ==========================
@@ -375,6 +405,7 @@ const menuBtn = document.getElementById("menuBtn");
 const sidebar = document.querySelector(".sidebar");
 
 const overlay = document.getElementById("sidebarOverlay");
+
 
 if (menuBtn) {
 
@@ -388,6 +419,7 @@ if (menuBtn) {
 
 }
 
+
 if (overlay) {
 
     overlay.addEventListener("click", () => {
@@ -400,7 +432,9 @@ if (overlay) {
 
 }
 
+
 const menuItems = document.querySelectorAll(".sidebar li");
+
 
 menuItems.forEach(item => {
 
