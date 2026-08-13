@@ -275,7 +275,9 @@ async function sendRequest(action) {
 
                     tone: tone.value,
 
-                    story: storyArea.value
+                    story: action === "regenerate"
+    ? lastScene.value
+    : storyArea.value
 
                 })
 
