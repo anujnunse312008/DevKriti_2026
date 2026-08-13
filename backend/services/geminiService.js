@@ -80,8 +80,12 @@ Instructions:
 
 - Keep every previous scene exactly the same.
 - Rewrite only the newest scene.
+- The new scene MUST be substantially different from the existing latest scene.
+- Do NOT reuse the same sentences, paragraphs, descriptions, dialogue, or wording from the existing latest scene.
+- Change the events, descriptions, dialogue, and phrasing while preserving continuity with the story.
+- Keep the same characters, setting, genre, and tone.
 - Maximum 250 words.
-- Keep the same writing style and tone.
+- Return ONLY the rewritten scene.
 `;
 
     }
