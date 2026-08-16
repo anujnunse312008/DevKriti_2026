@@ -3,16 +3,14 @@ require("dotenv").config();
 const OpenAI = require("openai");
 
 const client = new OpenAI({
-
     apiKey: process.env.OPENROUTER_API_KEY,
-
     baseURL: "https://openrouter.ai/api/v1"
-
 });
 
 async function generateStory(data) {
 
     let promptText = "";
+    let temperature = 0.8;
 
     // ---------- START STORY ----------
 
@@ -38,8 +36,10 @@ Instructions:
 - Do NOT finish the story.
 - End with a small suspense, mystery, decision or cliffhanger.
 - Do NOT write "Scene 1".
+- Return ONLY the story scene.
 `;
 
+        temperature = 0.8;
     }
 
     // ---------- CONTINUE STORY ----------
@@ -55,14 +55,17 @@ ${data.story}
 
 Instructions:
 
-- Continue naturally.
-- Respect every edit made by the user.
+- Continue naturally from the story.
+- Respect every event and edit already present.
 - Write ONLY one new scene.
 - Maximum 250 words.
-- Do NOT summarize previous scenes.
-- End with another interesting cliffhanger.
+- Do NOT rewrite or summarize previous scenes.
+- Introduce new development, action, conflict, discovery, or decision.
+- End with an interesting cliffhanger.
+- Return ONLY the new scene.
 `;
 
+        temperature = 0.8;
     }
 
     // ---------- REGENERATE ----------
@@ -70,24 +73,36 @@ Instructions:
     else if (data.action === "regenerate") {
 
         promptText = `
-Rewrite ONLY the latest scene.
+You are regenerating a story scene.
 
-Story:
+The following text is the CURRENT SCENE that must be replaced:
 
 ${data.story}
 
-Instructions:
+Generate a COMPLETELY DIFFERENT VERSION of this scene.
 
-- Keep every previous scene exactly the same.
-- Rewrite only the newest scene.
-- The new scene MUST be substantially different from the existing latest scene.
-- Do NOT reuse the same sentences, paragraphs, descriptions, dialogue, or wording from the existing latest scene.
-- Change the events, descriptions, dialogue, and phrasing while preserving continuity with the story.
-- Keep the same characters, setting, genre, and tone.
+The replacement must:
+
+- Be genuinely different, NOT a paraphrase.
+- Keep the same characters, world, genre, and overall tone.
+- Preserve important continuity and facts established in the current scene.
+- Change the main events and actions.
+- Change the conflict, discovery, decision, or development.
+- Use different dialogue.
+- Use different descriptions.
+- Use different sentence structures and wording.
+- Do NOT copy or lightly reword sentences from the original.
+- Do NOT follow the same sequence of events as the original scene.
+- Do NOT merely replace a few words.
+- Do NOT summarize the original scene.
 - Maximum 250 words.
-- Return ONLY the rewritten scene.
+- Return ONLY the new replacement scene.
+
+The reader should feel that this is an alternate version of what happened, not the same scene rewritten.
 `;
 
+        // Higher variation specifically for regeneration.
+        temperature = 1.1;
     }
 
     // ---------- FINISH STORY ----------
@@ -107,8 +122,17 @@ Instructions:
 - Resolve every major conflict.
 - Give the reader a satisfying ending.
 - Do NOT introduce another cliffhanger.
+- Do NOT summarize the story.
 - Maximum 350 words.
+- Return ONLY the final scene.
 `;
+
+        temperature = 0.8;
+    }
+
+    else {
+
+        throw new Error("Invalid story action.");
 
     }
 
@@ -116,19 +140,24 @@ Instructions:
 
         model: "openrouter/free",
 
-        messages: [
+        temperature: temperature,
 
+        messages: [
             {
                 role: "user",
                 content: promptText
             }
-
         ]
 
     });
 
-    return response.choices[0].message.content;
+    const story = response?.choices?.[0]?.message?.content;
 
+    if (!story) {
+        throw new Error("No story was returned by OpenRouter.");
+    }
+
+    return story.trim();
 }
 
 module.exports = generateStory;
