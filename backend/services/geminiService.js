@@ -72,38 +72,63 @@ Instructions:
 
     else if (data.action === "regenerate") {
 
-        promptText = `
-You are regenerating a story scene.
+    const response = await client.chat.completions.create({
 
-The following text is the CURRENT SCENE that must be replaced:
+        model: "openrouter/free",
+
+        temperature: 1.0,
+
+        messages: [
+
+            {
+                role: "system",
+                content: `
+You are a story-writing engine.
+
+Your task is to REPLACE the supplied story scene with a genuinely different alternate version.
+
+Rules:
+
+- The text supplied by the user is the scene to replace.
+- NEVER ask the user to provide the scene.
+- NEVER say that you need the scene.
+- NEVER explain what you are doing.
+- NEVER repeat the original scene.
+- Do NOT merely paraphrase the original scene.
+- Change the major events and actions.
+- Change the immediate conflict or development.
+- Use different dialogue.
+- Use different descriptions and sentence structures.
+- Keep the same characters, setting, genre, and overall tone.
+- Preserve important continuity established by the supplied scene.
+- Maximum 250 words.
+- Return ONLY the replacement story scene.
+`
+            },
+
+            {
+                role: "user",
+                content: `
+<<<CURRENT_SCENE_TO_REPLACE>>>
 
 ${data.story}
 
-Generate a COMPLETELY DIFFERENT VERSION of this scene.
+<<<END_CURRENT_SCENE_TO_REPLACE>>>
+`
+            }
 
-The replacement must:
+        ]
 
-- Be genuinely different, NOT a paraphrase.
-- Keep the same characters, world, genre, and overall tone.
-- Preserve important continuity and facts established in the current scene.
-- Change the main events and actions.
-- Change the conflict, discovery, decision, or development.
-- Use different dialogue.
-- Use different descriptions.
-- Use different sentence structures and wording.
-- Do NOT copy or lightly reword sentences from the original.
-- Do NOT follow the same sequence of events as the original scene.
-- Do NOT merely replace a few words.
-- Do NOT summarize the original scene.
-- Maximum 250 words.
-- Return ONLY the new replacement scene.
+    });
 
-The reader should feel that this is an alternate version of what happened, not the same scene rewritten.
-`;
+    const story = response?.choices?.[0]?.message?.content;
 
-        // Higher variation specifically for regeneration.
-        temperature = 1.1;
+    if (!story) {
+        throw new Error("No story was returned by OpenRouter.");
     }
+
+    return story.trim();
+}
 
     // ---------- FINISH STORY ----------
 
