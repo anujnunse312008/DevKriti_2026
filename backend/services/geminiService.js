@@ -74,7 +74,7 @@ Instructions:
 
     const response = await client.chat.completions.create({
 
-        model: "openrouter/free",
+        model: "nvidia/nemotron-3-ultra-550b-a55b:free",
 
         temperature: 1.0,
 
@@ -85,24 +85,27 @@ Instructions:
                 content: `
 You are a story-writing engine.
 
-Your task is to REPLACE the supplied story scene with a genuinely different alternate version.
+Your task is to replace the supplied story scene with a genuinely different alternate version.
 
 Rules:
 
-- The text supplied by the user is the scene to replace.
+- The supplied text is the current scene that must be replaced.
 - NEVER ask the user to provide the scene.
 - NEVER say that you need the scene.
 - NEVER explain what you are doing.
-- NEVER repeat the original scene.
-- Do NOT merely paraphrase the original scene.
+- Do NOT merely paraphrase the original.
 - Change the major events and actions.
-- Change the immediate conflict or development.
+- Change the immediate conflict, discovery, decision, or development.
 - Use different dialogue.
 - Use different descriptions and sentence structures.
-- Keep the same characters, setting, genre, and overall tone.
-- Preserve important continuity established by the supplied scene.
+- Keep the same main characters.
+- Keep the same story world and setting.
+- Keep the same genre and overall tone.
+- Preserve important continuity from the original scene.
+- Do not introduce unrelated characters, settings, or stories.
+- Do not reuse the same sequence of events.
 - Maximum 250 words.
-- Return ONLY the replacement story scene.
+- Return ONLY the replacement scene.
 `
             },
 
