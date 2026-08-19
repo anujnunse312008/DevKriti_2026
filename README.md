@@ -1,94 +1,125 @@
-\# StoryForge AI
+# StoryForge AI
 
+----An AI-powered interactive story writing platform that allows users to create, continue, edit, and manage stories with the help of generative AI. Users can authenticate securely, generate story content, save their stories, and manage them through a personalized dashboard.----
 
+# Screenshots
 
-StoryForge AI is an interactive AI-powered story writing platform that allows users to create, continue, edit, and manage their stories.
+----Add screenshots of the application here.----
 
+# Hosted URL
 
+----https://storyforgeai-53a0c.web.app----
 
-\## Features
+# Features Implemented
 
+## - Frontend
 
+----User registration and login interface----
 
-\- User registration and login
+----Dashboard for managing stories----
 
-\- Firebase Authentication
+----Create new story interface----
 
-\- AI-powered story generation
+----AI-generated story display----
 
-\- Continue an existing story
+----Continue story functionality----
 
-\- Create and manage stories
+----Story editor----
 
-\- Story editor
+----My Stories page----
 
-\- User dashboard
+----User profile page----
 
-\- Profile management
+----Logout functionality----
 
-\- Firestore database integration
+----Responsive and user-friendly interface----
 
+## - Backend
 
+----Node.js backend for handling application requests----
 
-\## Tech Stack
+----API integration for AI-powered story generation----
 
+----Gemini API integration----
 
+----Story generation and continuation services----
 
-\### Frontend
+----Environment variable support for securely managing API credentials----
 
-\- HTML
+## - Machine Learning
 
-\- CSS
+----Google Gemini generative AI is used to generate and continue interactive stories. The application sends story-related prompts to the Gemini API, which processes the prompts and generates creative story content. The generated content is then returned to the application and displayed to the user.----
 
-\- JavaScript
+# Technologies/Libraries/Packages Used
 
+## - Frontend:
 
+----HTML5----
 
-\### Backend
+----CSS3----
 
-\- Node.js
+----JavaScript----
 
-\- Express.js
+----Firebase Authentication----
 
+----Cloud Firestore----
 
+## - Backend:
 
-\### Database \& Authentication
+----Node.js----
 
-\- Firebase Authentication
+----@google/genai----
 
-\- Cloud Firestore
+----dotenv----
 
+----Firebase----
 
+## - Machine Learning:
 
-\### AI
+----Google Gemini API----
 
-\- Google Gemini API
+----@google/genai----
 
+# Local Setup
 
+----1. Clone the repository.----
 
-\## Project Structure
+```bash
+git clone https://github.com/anujnunse312008/DevKriti_2026.git
+```
 
+----2. Open the project directory.----
 
+```bash
+cd DevKriti_2026
+```
 
-```text
+----3. Navigate to the backend directory.----
 
-StoryForgeAI/
+```bash
+cd backend
+```
 
-├── frontend/
+----4. Install the backend dependencies.----
 
-│   ├── css/
+```bash
+npm install
+```
 
-│   ├── js/
+----5. Create a `.env` file inside the `backend` directory and add the required Gemini API key.----
 
-│   ├── \*.html
+```env
+GEMINI_API_KEY=your_api_key_here
+```
 
-│   └── ...
+----6. Start the backend server.----
 
-├── services/
+```bash
+npm start
+```
 
-├── server.js
+----7. Open the frontend through the configured local/development setup.----
 
-├── package.json
+# Team Members
 
-└── README.md
-
+----Anuj Nunse----
