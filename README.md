@@ -17,7 +17,7 @@
 
 # Hosted URL
 
-----https://storyforgeai-53a0c.web.app----
+https://storyforgeai-53a0c.web.app/
 
 # Features Implemented
 
